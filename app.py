@@ -1,6 +1,6 @@
 from flask import *
 from mail import *
-# from db import *
+from db import *
 
 app = Flask(__name__)
 
@@ -15,9 +15,11 @@ def home():
 @app.route('/submit', methods=['GET','POST'])
 def submit():
     if request.method == "POST":
+        sql = "SELECT * FROM games ORDER BY id DESC LIMIT 20"
+        cur.execute(sql)
+        results = cur.fetchall()
         user_mail = request.form['email']
-        content = "helloworld"
-        send_email(user_mail,content)
+        sendMail(user_mail,results)
     return redirect('/')
 
 if __name__ == "__main__": 

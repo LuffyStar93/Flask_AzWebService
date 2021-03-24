@@ -133,3 +133,13 @@ Maxime_ssh.pem
 
 #Hosts ansible
 .hosts
+
+#Variable env
+.env
+
+#logs
+logs.txt
+
+#azure config
+.azure
+.azure/
